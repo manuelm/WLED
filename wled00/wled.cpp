@@ -224,7 +224,7 @@ void WLED::beginStrip()
   // Initialize NeoPixel Strip and button
   strip.setShowCallback(handleOverlayDraw);
 
-#ifdef BTNPIN
+#if defined(BTNPIN) && BTNPIN >= 0
   pinMode(BTNPIN, INPUT_PULLUP);
 #endif
 
@@ -243,7 +243,7 @@ void WLED::beginStrip()
 #endif
 
   // disable button if it is "pressed" unintentionally
-#ifdef BTNPIN
+#if defined(BTNPIN) && BTNPIN >= 0
   if (digitalRead(BTNPIN) == LOW)
     buttonEnabled = false;
 #else
